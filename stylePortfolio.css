@@ -22,7 +22,7 @@ body, html {
 }
 
 .hero {
-    background-image: url("file:///Y:/WebsiteUpdate/nature/nature103.jpg");
+    background-image: url("nature/nature103.jpg");
     background-size: cover;
     background-position: center;
     height: 100vh;
