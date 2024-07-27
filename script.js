@@ -63,7 +63,7 @@ window.addEventListener('scroll', function () {
 document.addEventListener("DOMContentLoaded", function() {
     // Lazy loading logic remains unchanged
 
-    // Modal functionality
+    document.addEventListener("DOMContentLoaded", function() {
     var modal = document.getElementById("myModal");
     var modalImg = document.getElementById("modalImg");
     var captionText = document.getElementById("caption");
@@ -92,20 +92,4 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 });
-document.addEventListener("DOMContentLoaded", function() {
-    const lazyImages = document.querySelectorAll('img.lazy');
-    const lazyLoad = (target) => {
-        if (target.isIntersecting) {
-            const img = target.target;
-            img.src = img.dataset.src;
-            img.classList.remove('lazy');
-            observer.unobserve(img);
-        }
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(lazyLoad);
-    });
-    
-    lazyImages.forEach(img => observer.observe(img));
-});
+
