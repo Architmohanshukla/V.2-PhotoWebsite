@@ -284,18 +284,23 @@ body {
 .modal-content {
     margin: auto;
     display: block;
-    max-width: 60%; /* Fit to screen size */
-    max-height: 60%; /* Fit to screen size */
+    max-width: 80%; /* Limit the image size */
+    max-height: 80%; /* Limit the image size */
     width: auto;
     height: auto;
+    transition: transform 0.2s ease-in-out;
+    cursor: zoom-in;
 }
 
 /* Centering the image vertically and horizontally */
-.modal-content {
+.modal-content-wrapper {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Caption of Modal Image (Image Text) - Same Width as the Image */
@@ -312,7 +317,7 @@ body {
 /* Add Animation - Zoom in the Modal */
 .modal-content, #caption { 
     animation-name: zoom;
-    animation-duration: 0.4s;
+    animation-duration: 0.6s;
 }
 
 @keyframes zoom {
