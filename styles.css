@@ -272,13 +272,11 @@ body {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
+    overflow: hidden; /* Remove scroll feature */
     background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
 }
 
@@ -286,8 +284,18 @@ body {
 .modal-content {
     margin: auto;
     display: block;
-    width: 80%;
-    max-width: 700px;
+    max-width: 100%; /* Fit to screen size */
+    max-height: 100%; /* Fit to screen size */
+    width: auto;
+    height: auto;
+}
+
+/* Centering the image vertically and horizontally */
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* Caption of Modal Image (Image Text) - Same Width as the Image */
@@ -299,7 +307,6 @@ body {
     text-align: center;
     color: #ccc;
     padding: 10px 0;
-    height: 150px;
 }
 
 /* Add Animation - Zoom in the Modal */
@@ -309,8 +316,8 @@ body {
 }
 
 @keyframes zoom {
-    from {transform:scale(0)} 
-    to {transform:scale(1)}
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
 }
 
 /* The Close Button */
@@ -330,3 +337,4 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
+
