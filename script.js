@@ -63,10 +63,11 @@ window.addEventListener('scroll', function () {
 document.addEventListener("DOMContentLoaded", function() {
     // Lazy loading logic remains unchanged
 
-    document.addEventListener("DOMContentLoaded", function() {
+   document.addEventListener("DOMContentLoaded", function() {
     var modal = document.getElementById("myModal");
     var modalImg = document.getElementById("modalImg");
     var captionText = document.getElementById("caption");
+    var modalContentWrapper = document.querySelector(".modal-content-wrapper");
 
     document.querySelectorAll('.photo').forEach(photo => {
         photo.addEventListener('click', function() {
@@ -83,12 +84,27 @@ document.addEventListener("DOMContentLoaded", function() {
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() { 
         modal.style.display = "none";
+        modalImg.style.transform = "scale(1)";
+        modalImg.style.cursor = "zoom-in";
     }
 
     // When the user clicks anywhere outside of the modal content, close the modal
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
+            modalImg.style.transform = "scale(1)";
+            modalImg.style.cursor = "zoom-in";
+        }
+    }
+
+    // Add zoom functionality
+    modalImg.onclick = function() {
+        if (modalImg.style.transform === "scale(2)") {
+            modalImg.style.transform = "scale(1)";
+            modalImg.style.cursor = "zoom-in";
+        } else {
+            modalImg.style.transform = "scale(2)";
+            modalImg.style.cursor = "zoom-out";
         }
     }
 });
