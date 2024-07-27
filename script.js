@@ -59,3 +59,53 @@ window.addEventListener('scroll', function () {
         }, 300); // Delay hiding to allow for the fade-out effect
     }
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Lazy loading logic remains unchanged
+
+    // Modal functionality
+    var modal = document.getElementById("myModal");
+    var modalImg = document.getElementById("modalImg");
+    var captionText = document.getElementById("caption");
+
+    document.querySelectorAll('.photo').forEach(photo => {
+        photo.addEventListener('click', function() {
+            var img = this.querySelector('img');
+            modal.style.display = "block";
+            modalImg.src = img.src;
+            captionText.innerHTML = img.alt;
+        });
+    });
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() { 
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal content, close the modal
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+});
+document.addEventListener("DOMContentLoaded", function() {
+    const lazyImages = document.querySelectorAll('img.lazy');
+    const lazyLoad = (target) => {
+        if (target.isIntersecting) {
+            const img = target.target;
+            img.src = img.dataset.src;
+            img.classList.remove('lazy');
+            observer.unobserve(img);
+        }
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(lazyLoad);
+    });
+    
+    lazyImages.forEach(img => observer.observe(img));
+});
