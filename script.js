@@ -342,3 +342,31 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
+
+// Smooth scroll to top
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// Lazy load images
+document.addEventListener("DOMContentLoaded", function() {
+    const images = document.querySelectorAll('img[loading="lazy"]');
+    images.forEach(img => {
+        img.src = img.dataset.src;
+        img.removeAttribute('data-src');
+    });
+});
+
+// Masonry layout for gallery
+window.onload = () => {
+    const grid = document.querySelector('.gallery-grid');
+    const masonry = new Masonry(grid, {
+        itemSelector: '.card',
+        columnWidth: '.card',
+        gutter: 20,
+        fitWidth: true
+    });
+};
